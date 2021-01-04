@@ -81,34 +81,34 @@ The Thunderhead SDK for iOS supports iOS 8.0 and above.
 
 ## Installation
 
-Thunderhead SDK supports [Swift Package Manager](https://swift.org/package-manager/) and [CocoaPods](https://cocoapods.org) 
+Thunderhead SDK supports [Swift Package Manager](https://swift.org/package-manager/) and [CocoaPods](https://cocoapods.org).
 
 ### Swift Package Manager
 
 Adding a binary Swift package into your project can be done directly in Xcode in a few simple steps:
 
-1. To add a package dependency to your Xcode project, follow any of the following steps
-    + Go to Files > Swift Packages > Add Package Dependency… or Click and include the link provided below to add the package.
-    + Navigate to your project's General pane, and in the "Swift Packages" section, click the + button, and the link provided below.
-    + Navigate to your target’s General pane, and in the “Frameworks, Libraries, and Embedded Content” section, click the + button, select Add Other, and choose Add Package Dependency and add the link provided below.
+1. Add the package dependency into your Xcode project. To do so, you can pick any of the following approaches:
+    + In the Xcode Navigation Bar, go to File > Swift Packages > Add Package Dependency… You might need to select your project in the next window if there are multiple projects in your workspace. Enter the package repository URL provided below to the search field and hit Next.
+    + In your project's settings, navigate to the "Swift Packages" tab, and click the + button. Enter the package repository URL provided below to the search field and hit Next.
+    + In your project target’s settings, navigate to the “General” tab, and in the “Frameworks, Libraries, and Embedded Content” section, click the + button. Select Add Other, and choose Add Package Dependency… Enter the package repository URL provided below to the search field and hit Next.
 
 ```sh
 https://github.com/thunderheadone/one-sdk-ios
 ```
 
-![Thunderhead Add Package](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/ThunderheadAddPackageURL.png)
+![Thunderhead Add Package](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/SPM/ThunderheadAddPackageURL.png)
 
-2. Select additional options such as the specific version, etc. Provided options allow to use the version number, the branch or the commit identifier. By default, the current version up to the next major is selected. We highly recommend using the lastest version of [Thunderhead SDK for iOS](https://github.com/thunderheadone/one-sdk-ios/releases). To integrate a specific version of Thunderhead SDK, for example v6.0.0, specify the version number like below
+2. Select additional options such as a specific version number, branch or commit identifier. By default, Up to Next Major version is selected. We highly recommend using the latest version of the [Thunderhead SDK for iOS](https://github.com/thunderheadone/one-sdk-ios/releases). To integrate a specific version of the Thunderhead SDK, simply specify a version number you need. For example, to integrate v6.0.0 of Thunderhead SDK, specify the version number like below
 
-![Thunderhead Choose Package Version](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/ThunderheadChoosePackage.png)
+![Thunderhead Choose Package Version](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/SPM/ThunderheadChoosePackage.png)
 
 3. Wait for Xcode to finish downloading and resolving the Swift package into your project.
 
-![Thunderhead Cloning Package](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/ThunderheadFetchPackage.png)
+![Thunderhead Cloning Package](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/SPM/ThunderheadFetchPackage.png)
 
 4. Choose the package products and targets.
 
-![Thunderhead Select Target](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/ThunderheadSelectTarget.png)
+![Thunderhead Select Target](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/SPM/ThunderheadSelectTarget.png)
 
 5. Add **_ThunderheadBundle.bundle_** to **Copy Bundle Resources** section in your targets.
 
