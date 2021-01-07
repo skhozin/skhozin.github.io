@@ -71,26 +71,26 @@
 
 ## Requirements
 
-The Thunderhead SDK for iOS supports iOS 8.0 and above.
+The Thunderhead SDK for iOS supports iOS 9.0 and above.
 
 ### iOS version requirements
 
-+ iOS minimum version (deployment target): iOS 8.0
-+ iOS base SDK version: iOS 13.0
-+ Xcode minimum version: 11.0
++ iOS minimum version (deployment target): iOS 9.0
++ iOS base SDK version: iOS 14.3
++ Xcode minimum version: 12.0
+
+*Note:*
+Xcode versions < 12.0 only support archiving an application with bitcode disabled.
 
 ## Installation
 
-Thunderhead SDK supports [Swift Package Manager](https://swift.org/package-manager/) and [CocoaPods](https://cocoapods.org).
+The Thunderhead SDK can be integrated via [Swift Package Manager](#swift-package-manager), [CocoaPods](#cocoapods) or [by manually adding it to your project](#manual-installation).
 
 ### Swift Package Manager
 
 Adding a binary Swift package into your project can be done directly in Xcode in a few simple steps:
 
-1. Add the package dependency into your Xcode project. To do so, you can pick any of the following approaches:
-    + In the Xcode Navigation Bar, go to File > Swift Packages > Add Package Dependency… You might need to select your project in the next window if there are multiple projects in your workspace. Enter the package repository URL provided below to the search field and hit Next.
-    + In your project's settings, navigate to the "Swift Packages" tab, and click the + button. Enter the package repository URL provided below to the search field and hit Next.
-    + In your project target’s settings, navigate to the “General” tab, and in the “Frameworks, Libraries, and Embedded Content” section, click the + button. Select Add Other, and choose Add Package Dependency… Enter the package repository URL provided below to the search field and hit Next.
+1. Add the package dependency into your Xcode project. To do so, in the Xcode Navigation Bar, go to File > Swift Packages > Add Package Dependency… You might need to select your project in the next window if there are multiple projects in your workspace. Enter the package repository URL provided below to the search field and hit Next.
 
 ```sh
 https://github.com/thunderheadone/one-sdk-ios
@@ -98,7 +98,7 @@ https://github.com/thunderheadone/one-sdk-ios
 
 ![Thunderhead Add Package](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/SPM/ThunderheadAddPackageURL.png)
 
-2. Select additional options such as a specific version number, branch or commit identifier. By default, Up to Next Major version is selected. We highly recommend using the latest version of the [Thunderhead SDK for iOS](https://github.com/thunderheadone/one-sdk-ios/releases). To integrate a specific version of the Thunderhead SDK, simply specify a version number you need. For example, to integrate v6.0.0 of Thunderhead SDK, specify the version number like below
+2. Select additional options such as a specific version number, branch or commit identifier. By default, Up to Next Major version is selected. We highly recommend using the latest version of the [Thunderhead SDK for iOS](https://github.com/thunderheadone/one-sdk-ios/releases). To integrate a specific version of the Thunderhead SDK, simply specify a version number you need. For example, to integrate v6.0.0 of the Thunderhead SDK, specify the version number like on the screenshot below:
 
 ![Thunderhead Choose Package Version](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/SPM/ThunderheadChoosePackage.png)
 
@@ -110,7 +110,9 @@ https://github.com/thunderheadone/one-sdk-ios
 
 ![Thunderhead Select Target](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/SPM/ThunderheadSelectTarget.png)
 
-5. Add **_ThunderheadBundle.bundle_** to **Copy Bundle Resources** section in your targets.
+5. Drag and drop the **_ThunderheadBundle.bundle_** to **Copy Bundle Resources** section in your targets.
+
+![Thunderhead Copy Thunderhead Bundle](https://github.com/thunderheadone/one-sdk-ios/raw/master/images/SPM/ThunderheadAddBundleResource.gif)
 
 ### CocoaPods
 
@@ -137,6 +139,20 @@ $ pod install
 
 See example project for pod installation [here](https://github.com/thunderheadone/one-sdk-ios/tree/master/examples/dynamic-initialization-example).
 
+*Note:*
+While running `pod install`, if you get the following warnings 
+
+```txt
+[!] The `ThunderheadSampleApp [Debug]` target overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Target Support Files/Pods-ThunderheadSampleApp/Pods-ThunderheadSampleApp.debug.xcconfig'. This can lead to problems with the CocoaPods installation
+    - Use the `$(inherited)` flag, or
+    - Remove the build settings from the target.
+[!] The `ThunderheadSampleApp [Release]` target overrides the `OTHER_LDFLAGS` build setting defined in `Pods/Target Support Files/Pods-ThunderheadSampleApp/Pods-ThunderheadSampleApp.release.xcconfig'. This can lead to problems with the CocoaPods installation
+    - Use the `$(inherited)` flag, or
+    - Remove the build settings from the target.
+```
+
+Go to app target's **Build Settings**, add **$(inherited)** to **Other Linker Flags**, which will add linker flags generated in pods or see our [Troubleshooting Guide](TROUBLESHOOTING-GUIDE.md#resolve-undefined-symbols-for-architecture-arm64-compile-time-error).
+
 ### Manual installation
 
 1. [Download the latest Thunderhead SDK for iOS](https://github.com/thunderheadone/one-sdk-ios/releases) and extract the zip.
@@ -146,7 +162,7 @@ See example project for pod installation [here](https://github.com/thunderheadon
     + Navigate to your project build settings by selecting your project's Project File in the Project Navigator.
     + Select the main build target for your app.
     + Select the **Build Phases** tab.
-    + Confirm **_Thunderhead.framework_** is located in the **Link Binary With Libraries** section.
+    + Confirm **_Thunderhead.xcframework_** is located in the **Link Binary With Libraries** section.
     + Confirm **_ThunderheadBundle.bundle_** is located in the **Copy Bundle Resources** section.
 5. Ensure your project enables modules by going to **Build Settings** tab and setting the flag for **Enable Modules (C and Objective-C)** to **Yes**. Check out **_Adding the SDK dependencies for manual installation_** if you need modules to be disabled.
 
